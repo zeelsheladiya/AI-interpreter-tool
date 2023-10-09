@@ -13,15 +13,12 @@ def execute_command(command):
     Implement your command execution logic here.
     """
     if command == "exit":
-        print("Goodbye!")
-        exit()
+        return "Goodbye!"
     elif command == "help":
-        print("Available commands: run, exit, help, info")
+        return "Available commands: run, exit, help, info"
     elif command == "info":
-        print("This is an AI interpreter.")
+        return "This is an AI interpreter."
     elif command == "run":
-        print("Running the 'run' command.")
+        return "Running the 'run' command."
     else:
-        print(
-            f"Unknown command: {command}. Type 'help' for available commands."
-        )
+        return f"Unknown command: {command}. Type 'help' for available commands."

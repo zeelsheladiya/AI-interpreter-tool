@@ -28,7 +28,7 @@ def main():
             break  # Exit on Ctrl+D or EOF
 
         generated_command = generate_command(user_input)
-        execute_command(generated_command)
+        console.print(execute_command(generated_command))
 
 
 if __name__ == "__main__":

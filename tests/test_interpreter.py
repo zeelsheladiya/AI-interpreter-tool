@@ -3,38 +3,36 @@ import pytest
 
 
 def test_generate_command():
-    assert generate_command("Please run the script") == "run"
+    assert ( 
+        generate_command("run") == "run" 
+    )
     assert (
-        generate_command("Give me information") == "run"
+        generate_command("info") == "info"
     )  # Modify this test based on your logic
     assert (
-        generate_command("Exit the program") == "run"
+        generate_command("exit") == "exit" 
     )  # Modify this test based on your logic
     assert (
-        generate_command("Unknown command") == "run"
+        generate_command("unknown") == "unknown"
     )  # Modify this test based on your logic
 
 
 def test_execute_command(capsys):
-    execute_command("help")
-    captured = capsys.readouterr()
-    assert "Available commands" in captured.out
 
-    execute_command("exit")
-    captured = capsys.readouterr()
-    assert "Goodbye!" in captured.out
+    return_text = execute_command("help")
+    assert "Available commands" in return_text
 
-    execute_command("run")
-    captured = capsys.readouterr()
-    assert "Running the 'run' command" in captured.out
+    return_text = execute_command("exit")
+    assert "Goodbye!" in return_text
 
-    execute_command("info")
-    captured = capsys.readouterr()
-    assert "This is an AI interpreter" in captured.out
+    return_text = execute_command("run")
+    assert "Running the 'run' command" in return_text
 
-    execute_command("unknown")
-    captured = capsys.readouterr()
-    assert "Unknown command" in captured.out
+    return_text = execute_command("info")
+    assert "This is an AI interpreter" in return_text
+
+    return_text = execute_command("unknown")
+    assert "Unknown command" in return_text
 
 
 if __name__ == "__main__":
