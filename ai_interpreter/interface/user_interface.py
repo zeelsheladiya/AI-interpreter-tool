@@ -3,7 +3,7 @@ from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.auto_suggest import AutoSuggestFromHistory
 from prompt_toolkit.styles import Style
-from ai_interpreter.cli import autocomplete
+from ai_interpreter.cli import main_commands
 from ai_interpreter.core.interpreter import generate_command, execute_command
 
 # Define custom styles
@@ -18,7 +18,9 @@ custom_style = Style.from_dict({
 def main():
 
     console = Console()
-    completer = WordCompleter(autocomplete.commands, ignore_case=True)
+
+    # Intial Commands
+    completer = WordCompleter(main_commands.main_commands, ignore_case=True)
 
     console.print("Welcome to the AI Interpreter Tool")
 
@@ -27,7 +29,8 @@ def main():
         complete_while_typing=True,
         reserve_space_for_menu=2,
         auto_suggest=AutoSuggestFromHistory(), 
-        style=custom_style
+        style=custom_style,
+        swap_light_and_dark_colors=True
     )
 
     while True:
